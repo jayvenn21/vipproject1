@@ -1,0 +1,2653 @@
+Last login: Sat Feb 15 23:25:28 on ttys000
+(base) jayanth@Jayanths-MBP ~ % ssh jvennamreddy3@login-ice.pace.gatech.edu
+
+jvennamreddy3@login-ice.pace.gatech.edu's password: 
+Terms of Use
+
+This computer system is the property of Georgia Institute of
+Technology.  Any user of this system must comply with all Institute
+and Board of Regents policies, including the Acceptable Use
+Policy (AUP), Data Privacy Policy (DPP) and Cyber Security
+Policy (CSP), see http://b.gatech.edu/it-policies.  Users should
+have no expectation of privacy, as any and all files on this system
+may be intercepted, monitored, copied, inspected, and/or disclosed to
+authorized personnel in order to meet institute obligations.
+
+By using this system, I acknowledge and consent to these terms.
+
+#######################################
+# Welcome to GT Instructional Cluster #
+#######################################
+
+If you require assistance with this system, please contact your
+course instructor or teaching assistant (TA).
+[jvennamreddy3@login-ice-3 ~]$ scp efficientnet_test.py jvennamreddy3@login-ice.pace.gatech.edu:/home/hice1/jvennamreddy3/
+efficientnet_test.py                          100%  805     4.8MB/s   00:00    
+[jvennamreddy3@login-ice-3 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-3 ~]$ sbatch efficientnet.slurm
+Submitted batch job 1299297
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299297   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+[jvennamreddy3@login-ice-3 ~]$ cat efficientnet_output.txt
+---------------------------------------
+Begin Slurm Prolog: Feb-15-2025 23:39:17
+Job ID:    1298271
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Lmod has detected the following error: The following module(s) are unknown:
+"anaconda"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "anaconda"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+/var/lib/slurm/slurmd/job1298271/slurm_script: line 11: activate: No such file or directory
+Starting EfficientNet Benchmark...
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 2, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+Execution Time: 5 seconds
+---------------------------------------
+Begin Slurm Epilog: Feb-15-2025 23:39:34
+Job ID:        1298271
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:19,vmem=0,walltime=00:00:19,mem=502912K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-5-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ module avail
+
+PACE Software on RHEL9
+Search for software with 'module spider'
+For documentation see: https://gatech.service-now.com
+
+------------------- MVAPICH 2.3, GCC 12 MPI-Compiled Modules -------------------
+   adios2/2.9.0-mva2
+   adios2/2.10.1-mva2                      (D)
+   arpack-ng/3.9.0-mva2
+   fftw/3.3.10-mva2-openmp
+   fftw/3.3.10-mva2                        (D)
+   gromacs/2023.1-mva2-cuda-openmp
+   gromacs/2023.1-mva2-openmp              (D)
+   hdf5/1.14.3-mva2-cxx-fortran
+   hmmer/3.3.2-mva2
+   hypre/2.28.0-mva2-openmp
+   lammps/20220623.3-mva2-cuda-openmp
+   lammps/20220623.4-mva2-cuda-openmp-cc70
+   lammps/20220623.4-mva2-openmp
+   lammps/20240829-mva2-cuda-openmp-cc70
+   lammps/20240829-mva2-openmp             (D)
+   latte/1.2.2-mva2-pthreads
+   latte/1.2.2-mva2                        (D)
+   netcdf-c/4.9.2-mva2-hdf5-1.14
+   netcdf-cxx/4.2-mva2-hdf5-1.14
+   netcdf-cxx4/4.3.1-mva2-hdf5-1.14
+   netcdf-fortran/4.6.1-mva2-hdf5-1.14
+   netlib-scalapack/2.2.0-mva2
+   nwchem/7.2.0-mva2
+   openfoam-org/9-mva2
+   openfoam-org/10-mva2                    (D)
+   openfoam/2206-mva2
+   osu-micro-benchmarks/7.1-1-mva2
+   parallel-netcdf/1.12.3-mva2
+   parmetis/4.0.3-mva2
+   plumed/2.8.2-mva2-pthreads
+   plumed/2.8.2-mva2                       (D)
+   psi4/1.10
+   py-mpi4py/3.1.4-mva2
+   raxml/8.2.12-mva2-pthreads
+   raxml/8.2.12-mva2                       (D)
+   relion/5.0
+   scotch/7.0.3-mva2
+   scotch/7.0.4-mva2                       (D)
+
+--------------------------- GCC 12 Compiled Modules ----------------------------
+   atompaw/4.2.0.2               gmake/4.4.1
+   bedtools2/2.31.0              gsl/2.7.1
+   blast-plus/2.13.0             gtkwave/3.3.119
+   boost/1.79.0-atomic           llama-cpp/b4276-cuda-12.6.1
+   boost/1.82.0-atomic           metis/5.1.0
+   boost/1.86.0-atomic    (D)    mgard/2023-12-09-openmp
+   bowtie2/2.4.2                 mvapich2/2.3.7-1            (L)
+   bwa/0.7.17                    nghttp2/1.63.0
+   capnproto/0.10.2              openblas/0.3.23-openmp
+   cdhit/4.8.1-openmp            openblas/0.3.23-pthreads
+   cdhit/4.8.1            (D)    openblas/0.3.23             (D)
+   cgal/4.13-boost-1.86          opencv/4.6.0
+   cgal/5.6-boost-1.86    (D)    openmpi/4.1.5
+   cmake/3.30.2           (D)    pcre/8.45                   (D)
+   cuda/12.1.1                   pcre2/10.42
+   cuda/12.6.1            (D)    perl/5.36.0                 (D)
+   curl/8.8.0                    pigz/2.7                    (D)
+   diffutils/3.10                python/3.10.10
+   eigen/3.4.0                   qt/5.15.9
+   fastqc/0.11.9                 samtools/1.16.1
+   fasttree/2.1.11-openmp        snappy/1.1.10               (D)
+   fasttree/2.1.11        (D)    stream/5.10-openmp
+   fio/3.34                      stress/1.0.4
+   geant4/11.1.1                 swig/4.1.1
+   ginkgo/1.5.0-openmp           udunits/2.2.28              (D)
+
+--------------------------------- Core Modules ---------------------------------
+   abaqus/2023
+   adfr/1.0
+   ams/2022.101
+   anaconda3/2022.05.0.1
+   anaconda3/2023.03                 (D)
+   ansys/2023R2
+   ansys/2024R1
+   ansys/2024R2                      (D)
+   aocc/4.0.0
+   ase/3.22.1
+   bcl2fastq/2.20.0
+   boost/1.69.0-atomic
+   boost/1.86.0-atomic
+   braker/3.0.7.1
+   busco/5.6.1_cv1
+   cadence-spectre/23.10.327
+   cadence-virtuoso/23.10.050
+   cadence-virtuoso/23.10.080        (D)
+   cellranger/8.0.1
+   cfitsio/4.2.0
+   cmake/3.26.3
+   colmap/3.10
+   comsol/6.2
+   cplex/22.1
+   cuda/11.6.0
+   cuda/11.7.0
+   cuda/11.8.0
+   cuda/12.1.1
+   cuda/12.6.1-cu7yzjl
+   cudnn/8.4.0.27-11.6-cuda
+   cudnn/8.5.0.96-11.7-cuda
+   cudnn/9.2.0.82-11-cuda
+   cudnn/9.2.0.82-12-cuda            (D)
+   cuquantum/23.06
+   cuquantum/23.10                   (D)
+   dfam/1.89.1
+   dolfinx/0.10.0
+   ema3d/7.3.5
+   febio/2.9.1
+   febio/4.5
+   febio/4.7
+   febio/4.8                         (D)
+   fenics/2018-12-05
+   ficoxp/9.4.2
+   forge/24.0.6
+   gams/46.2.0
+   gaussian/16.C.02
+   gaussian/16                       (D)
+   gaussview/6
+   gcc-compatibility/12.3.0
+   gcc/12.3.0                        (L)
+   gdrcopy/2.3
+   gdrcopy/2.4.1                     (D)
+   gnuplot/5.4.4-X11
+   grace/5.1.25
+   gurobi/11.0.1
+   hpl/amd2023_07_18
+   intel-oneapi-compilers/2023.1.0
+   intel-oneapi-mkl/2023.1.0
+   intel-oneapi-mpi/2021.9.0
+   intel-oneapi-tbb/2021.9.0
+   intel-oneapi-vtune/2023.1.0
+   intel-oneapi-vtune/2025.0.0       (D)
+   intel/2021.9.0
+   iqtree/2.3.6
+   jax/0.4.20
+   julia/1.10.1
+   libpng/1.2.57
+   libszip/2.1.1
+   likwid/5.3.0
+   llvm/16.0.2
+   lumerical/2024r2-3
+   mamba/1.4.9
+   mathematica/14.0
+   matlab/r2023b
+   matlab/r2024b                     (D)
+   miniforge/24.3.0-0
+   mprime/30.8
+   multibugs/2.0
+   nvhpc/24.5
+   opencilk/2.1
+   orca/4.2.1
+   orca/5.0.1                        (D)
+   pace/2024.03
+   papi/7.1.0
+   parallel/20220522
+   paraview/5.12.0-egl
+   paraview/5.12.0-gui               (D)
+   pcre/8.45
+   perl/5.36.0
+   pigz/2.7
+   pillow/10.2.0
+   pipseeker/1.0.0
+   python/3.10.10
+   python/3.11.9
+   python/3.12.5                     (D)
+   pytorch/2.1.0
+   quantum-espresso/7.1-cuda
+   r/4.2.1-bio
+   r/4.2.1-cuda
+   r/4.2.1-tidy
+   r/4.3.2-cuda
+   r/4.3.3-bio
+   r/4.3.3-tidy                      (D)
+   reframe/4.4.1
+   root/6.30.04
+   ruby/3.1.0
+   scikit-learn/1.4.0
+   snappy/1.1.10
+   spack/latest
+   starccmplus/18.02
+   starccmplus/19.04                 (D)
+   synopsys-quantumatk/V-2023.12-SP1
+   tecplot/2023r1
+   tensorflow/2.13
+   tensorflow/2.16.1                 (D)
+   udunits/2.2.28
+   vasp/5.4.4
+   vina/1.2.5
+   vmd/1.9.3
+   vmd/1.9.4a57                      (D)
+   xilinx-Vitis/2024.1
+
+  Where:
+   L:  Module is loaded
+   D:  Default Module
+
+[jvennamreddy3@login-ice-3 ~]$ module load python/3.10.10
+module load cuda/12.6.1
+[jvennamreddy3@login-ice-3 ~]$ pip install --user datasets torch torchvision
+Collecting datasets
+  Downloading datasets-3.3.0-py3-none-any.whl (484 kB)
+     |████████████████████████████████| 484 kB 2.4 MB/s 
+Requirement already satisfied: torch in ./.local/lib/python3.9/site-packages (2.6.0)
+Requirement already satisfied: torchvision in ./.local/lib/python3.9/site-packages (0.21.0)
+Collecting multiprocess<0.70.17
+  Downloading multiprocess-0.70.16-py39-none-any.whl (133 kB)
+     |████████████████████████████████| 133 kB 44.4 MB/s 
+Collecting xxhash
+  Downloading xxhash-3.5.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (193 kB)
+     |████████████████████████████████| 193 kB 100.4 MB/s 
+Requirement already satisfied: numpy>=1.17 in /usr/lib64/python3.9/site-packages (from datasets) (1.20.1)
+Collecting pyarrow>=15.0.0
+  Downloading pyarrow-19.0.0-cp39-cp39-manylinux_2_28_x86_64.whl (42.1 MB)
+     |████████████████████████████████| 42.1 MB 108.8 MB/s 
+Requirement already satisfied: filelock in ./.local/lib/python3.9/site-packages (from datasets) (3.17.0)
+Collecting tqdm>=4.66.3
+  Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+     |████████████████████████████████| 78 kB 7.7 MB/s 
+Collecting aiohttp
+  Downloading aiohttp-3.11.12-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+     |████████████████████████████████| 1.6 MB 101.4 MB/s 
+Collecting pandas
+  Downloading pandas-2.2.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.1 MB)
+     |████████████████████████████████| 13.1 MB 96.5 MB/s 
+Requirement already satisfied: packaging in /usr/lib/python3.9/site-packages (from datasets) (20.9)
+Requirement already satisfied: pyyaml>=5.1 in /usr/lib64/python3.9/site-packages (from datasets) (5.4.1)
+Collecting fsspec[http]<=2024.12.0,>=2023.1.0
+  Downloading fsspec-2024.12.0-py3-none-any.whl (183 kB)
+     |████████████████████████████████| 183 kB 89.8 MB/s 
+Collecting requests>=2.32.2
+  Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+     |████████████████████████████████| 64 kB 3.9 MB/s 
+Collecting dill<0.3.9,>=0.3.0
+  Downloading dill-0.3.8-py3-none-any.whl (116 kB)
+     |████████████████████████████████| 116 kB 104.6 MB/s 
+Collecting huggingface-hub>=0.24.0
+  Downloading huggingface_hub-0.28.1-py3-none-any.whl (464 kB)
+     |████████████████████████████████| 464 kB 84.4 MB/s 
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in ./.local/lib/python3.9/site-packages (from torch) (10.3.5.147)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in ./.local/lib/python3.9/site-packages (from torch) (2.21.5)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in ./.local/lib/python3.9/site-packages (from torch) (11.2.1.3)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in ./.local/lib/python3.9/site-packages (from torch) (12.4.127)
+Requirement already satisfied: jinja2 in ./.local/lib/python3.9/site-packages (from torch) (3.1.5)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./.local/lib/python3.9/site-packages (from torch) (4.12.2)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in ./.local/lib/python3.9/site-packages (from torch) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in ./.local/lib/python3.9/site-packages (from torch) (3.2.0)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in ./.local/lib/python3.9/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in ./.local/lib/python3.9/site-packages (from torch) (12.4.127)
+Requirement already satisfied: fsspec in ./.local/lib/python3.9/site-packages (from torch) (2025.2.0)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in ./.local/lib/python3.9/site-packages (from torch) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in ./.local/lib/python3.9/site-packages (from torch) (12.3.1.170)
+Requirement already satisfied: sympy==1.13.1 in ./.local/lib/python3.9/site-packages (from torch) (1.13.1)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in ./.local/lib/python3.9/site-packages (from torch) (0.6.2)
+Requirement already satisfied: networkx in ./.local/lib/python3.9/site-packages (from torch) (3.2.1)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in ./.local/lib/python3.9/site-packages (from torch) (9.1.0.70)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in ./.local/lib/python3.9/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in ./.local/lib/python3.9/site-packages (from torch) (12.4.5.8)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./.local/lib/python3.9/site-packages (from sympy==1.13.1->torch) (1.3.0)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.9/site-packages (from torchvision) (11.1.0)
+Collecting aiohappyeyeballs>=2.3.0
+  Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl (14 kB)
+Collecting attrs>=17.3.0
+  Downloading attrs-25.1.0-py3-none-any.whl (63 kB)
+     |████████████████████████████████| 63 kB 1.8 MB/s 
+Collecting aiosignal>=1.1.2
+  Downloading aiosignal-1.3.2-py2.py3-none-any.whl (7.6 kB)
+Collecting yarl<2.0,>=1.17.0
+  Downloading yarl-1.18.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (321 kB)
+     |████████████████████████████████| 321 kB 103.4 MB/s 
+Collecting propcache>=0.2.0
+  Downloading propcache-0.2.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (208 kB)
+     |████████████████████████████████| 208 kB 99.7 MB/s 
+Collecting frozenlist>=1.1.1
+  Downloading frozenlist-1.5.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (242 kB)
+     |████████████████████████████████| 242 kB 91.7 MB/s 
+Requirement already satisfied: async-timeout<6.0,>=4.0 in /usr/lib/python3.9/site-packages (from aiohttp->datasets) (4.0.2)
+Collecting multidict<7.0,>=4.5
+  Downloading multidict-6.1.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (124 kB)
+     |████████████████████████████████| 124 kB 100.6 MB/s 
+Requirement already satisfied: pyparsing>=2.0.2 in /usr/lib/python3.9/site-packages (from packaging->datasets) (2.4.7)
+Collecting charset-normalizer<4,>=2
+  Downloading charset_normalizer-3.4.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (146 kB)
+     |████████████████████████████████| 146 kB 95.7 MB/s 
+Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/lib/python3.9/site-packages (from requests>=2.32.2->datasets) (1.26.5)
+Requirement already satisfied: idna<4,>=2.5 in /usr/lib/python3.9/site-packages (from requests>=2.32.2->datasets) (2.10)
+Collecting certifi>=2017.4.17
+  Downloading certifi-2025.1.31-py3-none-any.whl (166 kB)
+     |████████████████████████████████| 166 kB 101.8 MB/s 
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.9/site-packages (from jinja2->torch) (3.0.2)
+Collecting numpy>=1.17
+  Downloading numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.5 MB)
+     |████████████████████████████████| 19.5 MB 104.8 MB/s 
+Requirement already satisfied: pytz>=2020.1 in /usr/lib/python3.9/site-packages (from pandas->datasets) (2021.1)
+Collecting python-dateutil>=2.8.2
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+     |████████████████████████████████| 229 kB 104.4 MB/s 
+Collecting tzdata>=2022.7
+  Downloading tzdata-2025.1-py2.py3-none-any.whl (346 kB)
+     |████████████████████████████████| 346 kB 104.8 MB/s 
+Requirement already satisfied: six>=1.5 in /usr/lib/python3.9/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.15.0)
+Installing collected packages: propcache, multidict, frozenlist, yarl, charset-normalizer, certifi, attrs, aiosignal, aiohappyeyeballs, tzdata, tqdm, requests, python-dateutil, numpy, fsspec, dill, aiohttp, xxhash, pyarrow, pandas, multiprocess, huggingface-hub, datasets
+  WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+  distutils: /home/hice1/jvennamreddy3/.local/lib/python3.9/site-packages
+  sysconfig: /home/hice1/jvennamreddy3/.local/lib64/python3.9/site-packages
+  WARNING: Additional context:
+  user = True
+  home = None
+  root = None
+  prefix = None
+  WARNING: The script normalizer is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script tqdm is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts f2py and numpy-config are installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Attempting uninstall: fsspec
+    Found existing installation: fsspec 2025.2.0
+    Uninstalling fsspec-2025.2.0:
+      Successfully uninstalled fsspec-2025.2.0
+  WARNING: The script huggingface-cli is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script datasets-cli is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed aiohappyeyeballs-2.4.6 aiohttp-3.11.12 aiosignal-1.3.2 attrs-25.1.0 certifi-2025.1.31 charset-normalizer-3.4.1 datasets-3.3.0 dill-0.3.8 frozenlist-1.5.0 fsspec-2024.12.0 huggingface-hub-0.28.1 multidict-6.1.0 multiprocess-0.70.16 numpy-2.0.2 pandas-2.2.3 propcache-0.2.1 pyarrow-19.0.0 python-dateutil-2.9.0.post0 requests-2.32.3 tqdm-4.67.1 tzdata-2025.1 xxhash-3.5.0 yarl-1.18.3
+[jvennamreddy3@login-ice-3 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-3 ~]$ sbatch efficientnet.slurm
+Submitted batch job 1299305
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+[jvennamreddy3@login-ice-3 ~]$ cat efficientnet_output.txt
+---------------------------------------
+Begin Slurm Prolog: Feb-15-2025 23:39:17
+Job ID:    1298271
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Lmod has detected the following error: The following module(s) are unknown:
+"anaconda"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "anaconda"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+/var/lib/slurm/slurmd/job1298271/slurm_script: line 11: activate: No such file or directory
+Starting EfficientNet Benchmark...
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 2, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+Execution Time: 5 seconds
+---------------------------------------
+Begin Slurm Epilog: Feb-15-2025 23:39:34
+Job ID:        1298271
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:19,vmem=0,walltime=00:00:19,mem=502912K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-5-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ cat efficientnet.slurm
+#!/bin/bash
+#SBATCH --job-name=efficientnet_test
+#SBATCH --partition=ice-gpu
+#SBATCH --gres=gpu:rtx_6000:1
+#SBATCH --mem=16G
+#SBATCH --time=00:10:00  # Adjust time as needed
+
+# Load necessary modules
+module load python/3.10.10
+module load cuda/12.6.1
+
+# Install packages (if not already installed)
+pip install --user --no-cache-dir datasets torch torchvision
+
+# Run your Python script
+echo "Starting EfficientNet Benchmark..."
+python /home/hice1/jvennamreddy3/efficientnet_test.py
+
+echo "Execution Complete."
+[jvennamreddy3@login-ice-3 ~]$ cat slurm-1299305.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 11:52:45
+Job ID:    1299305
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) bzip2/1.0.8       4) libmd/1.0.4          7) util-linux-uuid/2.38.1
+  2) expat/2.5.0       5) libxcrypt/4.4.33     8) xz/5.4.1
+  3) libbsd/0.11.7     6) python/3.10.10
+
+/var/lib/slurm/slurmd/job1299305/slurm_script: line 13: pip: command not found
+Starting EfficientNet Benchmark...
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+Execution Complete.
+---------------------------------------
+Begin Slurm Epilog: Feb-16-2025 11:52:47
+Job ID:        1299305
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:03,vmem=0,walltime=00:00:03,mem=12240K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-7-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-3 ~]$ sbatch efficientnet.slurm
+Submitted batch job 1299312
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ cat efficientnet_output.txt
+---------------------------------------
+Begin Slurm Prolog: Feb-15-2025 23:39:17
+Job ID:    1298271
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Lmod has detected the following error: The following module(s) are unknown:
+"anaconda"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "anaconda"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+/var/lib/slurm/slurmd/job1298271/slurm_script: line 11: activate: No such file or directory
+Starting EfficientNet Benchmark...
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 2, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+Execution Time: 5 seconds
+---------------------------------------
+Begin Slurm Epilog: Feb-15-2025 23:39:34
+Job ID:        1298271
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:19,vmem=0,walltime=00:00:19,mem=502912K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-5-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ cat efficientnet_output.txt
+---------------------------------------
+Begin Slurm Prolog: Feb-15-2025 23:39:17
+Job ID:    1298271
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Lmod has detected the following error: The following module(s) are unknown:
+"anaconda"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "anaconda"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+/var/lib/slurm/slurmd/job1298271/slurm_script: line 11: activate: No such file or directory
+Starting EfficientNet Benchmark...
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 2, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+Execution Time: 5 seconds
+---------------------------------------
+Begin Slurm Epilog: Feb-15-2025 23:39:34
+Job ID:        1298271
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:19,vmem=0,walltime=00:00:19,mem=502912K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-5-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ cat efficientnet_output.txt
+---------------------------------------
+Begin Slurm Prolog: Feb-15-2025 23:39:17
+Job ID:    1298271
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Lmod has detected the following error: The following module(s) are unknown:
+"anaconda"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "anaconda"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+/var/lib/slurm/slurmd/job1298271/slurm_script: line 11: activate: No such file or directory
+Starting EfficientNet Benchmark...
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 2, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+Execution Time: 5 seconds
+---------------------------------------
+Begin Slurm Epilog: Feb-15-2025 23:39:34
+Job ID:        1298271
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:19,vmem=0,walltime=00:00:19,mem=502912K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-5-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr  R       0:23      1 atl1-1-01-005-7-0
+[jvennamreddy3@login-ice-3 ~]$ cat efficientnet_output.txt
+---------------------------------------
+Begin Slurm Prolog: Feb-15-2025 23:39:17
+Job ID:    1298271
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Lmod has detected the following error: The following module(s) are unknown:
+"anaconda"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "anaconda"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+/var/lib/slurm/slurmd/job1298271/slurm_script: line 11: activate: No such file or directory
+Starting EfficientNet Benchmark...
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 2, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+Execution Time: 5 seconds
+---------------------------------------
+Begin Slurm Epilog: Feb-15-2025 23:39:34
+Job ID:        1298271
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:19,vmem=0,walltime=00:00:19,mem=502912K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-5-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ cat efficientnet_output.txt
+---------------------------------------
+Begin Slurm Prolog: Feb-15-2025 23:39:17
+Job ID:    1298271
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Lmod has detected the following error: The following module(s) are unknown:
+"anaconda"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "anaconda"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+/var/lib/slurm/slurmd/job1298271/slurm_script: line 11: activate: No such file or directory
+Starting EfficientNet Benchmark...
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 2, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+Execution Time: 5 seconds
+---------------------------------------
+Begin Slurm Epilog: Feb-15-2025 23:39:34
+Job ID:        1298271
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:19,vmem=0,walltime=00:00:19,mem=502912K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-5-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr  R       0:39      1 atl1-1-01-005-7-0
+[jvennamreddy3@login-ice-3 ~]$ cat slurm-1299312.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 11:55:16
+Job ID:    1299312
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) bzip2/1.0.8       4) libmd/1.0.4          7) util-linux-uuid/2.38.1
+  2) expat/2.5.0       5) libxcrypt/4.4.33     8) xz/5.4.1
+  3) libbsd/0.11.7     6) python/3.10.10
+
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Collecting torch
+  Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl.metadata (28 kB)
+Collecting torchvision
+  Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl.metadata (6.1 kB)
+Collecting filelock (from datasets)
+  Downloading filelock-3.17.0-py3-none-any.whl.metadata (2.9 kB)
+Collecting numpy>=1.17 (from datasets)
+  Downloading numpy-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Collecting pandas (from datasets)
+  Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Collecting fsspec<=2024.12.0,>=2023.1.0 (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets)
+  Downloading fsspec-2024.12.0-py3-none-any.whl.metadata (11 kB)
+Collecting aiohttp (from datasets)
+  Downloading aiohttp-3.11.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Collecting packaging (from datasets)
+  Downloading packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting pyyaml>=5.1 (from datasets)
+  Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting typing-extensions>=4.10.0 (from torch)
+  Downloading typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting networkx (from torch)
+  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting jinja2 (from torch)
+  Downloading jinja2-3.1.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting nvidia-cuda-nvrtc-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-runtime-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-cupti-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cudnn-cu12==9.1.0.70 (from torch)
+  Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cublas-cu12==12.4.5.8 (from torch)
+  Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cufft-cu12==11.2.1.3 (from torch)
+  Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-curand-cu12==10.3.5.147 (from torch)
+  Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cusolver-cu12==11.6.1.9 (from torch)
+  Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparse-cu12==12.3.1.170 (from torch)
+  Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparselt-cu12==0.6.2 (from torch)
+  Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl.metadata (6.8 kB)
+Collecting nvidia-nccl-cu12==2.21.5 (from torch)
+  Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvtx-cu12==12.4.127 (from torch)
+  Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-nvjitlink-cu12==12.4.127 (from torch)
+  Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting triton==3.2.0 (from torch)
+  Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+Collecting sympy==1.13.1 (from torch)
+  Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy==1.13.1->torch)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Collecting aiohappyeyeballs>=2.3.0 (from aiohttp->datasets)
+  Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.1.2 (from aiohttp->datasets)
+  Downloading aiosignal-1.3.2-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp->datasets)
+  Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting attrs>=17.3.0 (from aiohttp->datasets)
+  Downloading attrs-25.1.0-py3-none-any.whl.metadata (10 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp->datasets)
+  Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp->datasets)
+  Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.0 kB)
+Collecting propcache>=0.2.0 (from aiohttp->datasets)
+  Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.2 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp->datasets)
+  Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (69 kB)
+Collecting charset-normalizer<4,>=2 (from requests>=2.32.2->datasets)
+  Downloading charset_normalizer-3.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (35 kB)
+Collecting idna<4,>=2.5 (from requests>=2.32.2->datasets)
+  Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.32.2->datasets)
+  Downloading urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests>=2.32.2->datasets)
+  Downloading certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Downloading MarkupSafe-3.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Collecting python-dateutil>=2.8.2 (from pandas->datasets)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas->datasets)
+  Downloading pytz-2025.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->datasets)
+  Downloading tzdata-2025.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->datasets)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl (766.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 766.7/766.7 MB 187.6 MB/s eta 0:00:00
+Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl (363.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 363.4/363.4 MB 316.8 MB/s eta 0:00:00
+Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (13.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 331.1 MB/s eta 0:00:00
+Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (24.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.6/24.6 MB 263.1 MB/s eta 0:00:00
+Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (883 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.7/883.7 kB 707.7 MB/s eta 0:00:00
+Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 664.8/664.8 MB 324.5 MB/s eta 0:00:00
+Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl (211.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.5/211.5 MB 394.0 MB/s eta 0:00:00
+Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl (56.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.3/56.3 MB 202.3 MB/s eta 0:00:00
+Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl (127.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.9/127.9 MB 322.4 MB/s eta 0:00:00
+Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl (207.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.5/207.5 MB 377.7 MB/s eta 0:00:00
+Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl (150.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 150.1/150.1 MB 298.2 MB/s eta 0:00:00
+Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl (188.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 188.7/188.7 MB 392.8 MB/s eta 0:00:00
+Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (21.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.1/21.1 MB 313.8 MB/s eta 0:00:00
+Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (99 kB)
+Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 417.4 MB/s eta 0:00:00
+Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (253.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 253.1/253.1 MB 196.8 MB/s eta 0:00:00
+Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl (7.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 289.8 MB/s eta 0:00:00
+Downloading fsspec-2024.12.0-py3-none-any.whl (183 kB)
+Downloading aiohttp-3.11.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 524.6 MB/s eta 0:00:00
+Downloading numpy-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 309.4 MB/s eta 0:00:00
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (751 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 751.2/751.2 kB 719.2 MB/s eta 0:00:00
+Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Downloading filelock-3.17.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.5-py3-none-any.whl (134 kB)
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 683.3 MB/s eta 0:00:00
+Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 455.3 MB/s eta 0:00:00
+Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl (14 kB)
+Downloading aiosignal-1.3.2-py2.py3-none-any.whl (7.6 kB)
+Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Downloading attrs-25.1.0-py3-none-any.whl (63 kB)
+Downloading certifi-2025.1.31-py3-none-any.whl (166 kB)
+Downloading charset_normalizer-3.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (146 kB)
+Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (241 kB)
+Downloading idna-3.10-py3-none-any.whl (70 kB)
+Downloading MarkupSafe-3.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20 kB)
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 571.4 MB/s eta 0:00:00
+Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (124 kB)
+Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (205 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading pytz-2025.1-py2.py3-none-any.whl (507 kB)
+Downloading tzdata-2025.1-py2.py3-none-any.whl (346 kB)
+Downloading urllib3-2.3.0-py3-none-any.whl (128 kB)
+Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (319 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: triton, pytz, nvidia-cusparselt-cu12, mpmath, urllib3, tzdata, typing-extensions, sympy, six, pyyaml, propcache, packaging, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, MarkupSafe, idna, fsspec, frozenlist, filelock, charset-normalizer, certifi, attrs, async-timeout, aiohappyeyeballs, python-dateutil, nvidia-cusparse-cu12, nvidia-cudnn-cu12, multidict, jinja2, aiosignal, yarl, pandas, nvidia-cusolver-cu12, torch, aiohttp, torchvision
+  WARNING: The scripts proton and proton-viewer are installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script isympy is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[jvennamreddy3@login-ice-3 ~]$ cat slurm-1299312.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 11:55:16
+Job ID:    1299312
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) bzip2/1.0.8       4) libmd/1.0.4          7) util-linux-uuid/2.38.1
+  2) expat/2.5.0       5) libxcrypt/4.4.33     8) xz/5.4.1
+  3) libbsd/0.11.7     6) python/3.10.10
+
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Collecting torch
+  Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl.metadata (28 kB)
+Collecting torchvision
+  Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl.metadata (6.1 kB)
+Collecting filelock (from datasets)
+  Downloading filelock-3.17.0-py3-none-any.whl.metadata (2.9 kB)
+Collecting numpy>=1.17 (from datasets)
+  Downloading numpy-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Collecting pandas (from datasets)
+  Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Collecting fsspec<=2024.12.0,>=2023.1.0 (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets)
+  Downloading fsspec-2024.12.0-py3-none-any.whl.metadata (11 kB)
+Collecting aiohttp (from datasets)
+  Downloading aiohttp-3.11.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Collecting packaging (from datasets)
+  Downloading packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting pyyaml>=5.1 (from datasets)
+  Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting typing-extensions>=4.10.0 (from torch)
+  Downloading typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting networkx (from torch)
+  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting jinja2 (from torch)
+  Downloading jinja2-3.1.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting nvidia-cuda-nvrtc-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-runtime-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-cupti-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cudnn-cu12==9.1.0.70 (from torch)
+  Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cublas-cu12==12.4.5.8 (from torch)
+  Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cufft-cu12==11.2.1.3 (from torch)
+  Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-curand-cu12==10.3.5.147 (from torch)
+  Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cusolver-cu12==11.6.1.9 (from torch)
+  Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparse-cu12==12.3.1.170 (from torch)
+  Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparselt-cu12==0.6.2 (from torch)
+  Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl.metadata (6.8 kB)
+Collecting nvidia-nccl-cu12==2.21.5 (from torch)
+  Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvtx-cu12==12.4.127 (from torch)
+  Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-nvjitlink-cu12==12.4.127 (from torch)
+  Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting triton==3.2.0 (from torch)
+  Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+Collecting sympy==1.13.1 (from torch)
+  Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy==1.13.1->torch)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Collecting aiohappyeyeballs>=2.3.0 (from aiohttp->datasets)
+  Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.1.2 (from aiohttp->datasets)
+  Downloading aiosignal-1.3.2-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp->datasets)
+  Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting attrs>=17.3.0 (from aiohttp->datasets)
+  Downloading attrs-25.1.0-py3-none-any.whl.metadata (10 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp->datasets)
+  Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp->datasets)
+  Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.0 kB)
+Collecting propcache>=0.2.0 (from aiohttp->datasets)
+  Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.2 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp->datasets)
+  Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (69 kB)
+Collecting charset-normalizer<4,>=2 (from requests>=2.32.2->datasets)
+  Downloading charset_normalizer-3.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (35 kB)
+Collecting idna<4,>=2.5 (from requests>=2.32.2->datasets)
+  Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.32.2->datasets)
+  Downloading urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests>=2.32.2->datasets)
+  Downloading certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Downloading MarkupSafe-3.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Collecting python-dateutil>=2.8.2 (from pandas->datasets)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas->datasets)
+  Downloading pytz-2025.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->datasets)
+  Downloading tzdata-2025.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->datasets)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl (766.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 766.7/766.7 MB 187.6 MB/s eta 0:00:00
+Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl (363.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 363.4/363.4 MB 316.8 MB/s eta 0:00:00
+Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (13.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 331.1 MB/s eta 0:00:00
+Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (24.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.6/24.6 MB 263.1 MB/s eta 0:00:00
+Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (883 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.7/883.7 kB 707.7 MB/s eta 0:00:00
+Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 664.8/664.8 MB 324.5 MB/s eta 0:00:00
+Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl (211.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.5/211.5 MB 394.0 MB/s eta 0:00:00
+Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl (56.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.3/56.3 MB 202.3 MB/s eta 0:00:00
+Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl (127.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.9/127.9 MB 322.4 MB/s eta 0:00:00
+Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl (207.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.5/207.5 MB 377.7 MB/s eta 0:00:00
+Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl (150.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 150.1/150.1 MB 298.2 MB/s eta 0:00:00
+Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl (188.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 188.7/188.7 MB 392.8 MB/s eta 0:00:00
+Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (21.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.1/21.1 MB 313.8 MB/s eta 0:00:00
+Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (99 kB)
+Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 417.4 MB/s eta 0:00:00
+Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (253.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 253.1/253.1 MB 196.8 MB/s eta 0:00:00
+Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl (7.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 289.8 MB/s eta 0:00:00
+Downloading fsspec-2024.12.0-py3-none-any.whl (183 kB)
+Downloading aiohttp-3.11.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 524.6 MB/s eta 0:00:00
+Downloading numpy-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 309.4 MB/s eta 0:00:00
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (751 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 751.2/751.2 kB 719.2 MB/s eta 0:00:00
+Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Downloading filelock-3.17.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.5-py3-none-any.whl (134 kB)
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 683.3 MB/s eta 0:00:00
+Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 455.3 MB/s eta 0:00:00
+Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl (14 kB)
+Downloading aiosignal-1.3.2-py2.py3-none-any.whl (7.6 kB)
+Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Downloading attrs-25.1.0-py3-none-any.whl (63 kB)
+Downloading certifi-2025.1.31-py3-none-any.whl (166 kB)
+Downloading charset_normalizer-3.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (146 kB)
+Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (241 kB)
+Downloading idna-3.10-py3-none-any.whl (70 kB)
+Downloading MarkupSafe-3.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20 kB)
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 571.4 MB/s eta 0:00:00
+Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (124 kB)
+Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (205 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading pytz-2025.1-py2.py3-none-any.whl (507 kB)
+Downloading tzdata-2025.1-py2.py3-none-any.whl (346 kB)
+Downloading urllib3-2.3.0-py3-none-any.whl (128 kB)
+Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (319 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: triton, pytz, nvidia-cusparselt-cu12, mpmath, urllib3, tzdata, typing-extensions, sympy, six, pyyaml, propcache, packaging, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, MarkupSafe, idna, fsspec, frozenlist, filelock, charset-normalizer, certifi, attrs, async-timeout, aiohappyeyeballs, python-dateutil, nvidia-cusparse-cu12, nvidia-cudnn-cu12, multidict, jinja2, aiosignal, yarl, pandas, nvidia-cusolver-cu12, torch, aiohttp, torchvision
+  WARNING: The scripts proton and proton-viewer are installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script isympy is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr  R       2:30      1 atl1-1-01-005-7-0
+[jvennamreddy3@login-ice-3 ~]$ tail -n 100 slurm-1299312.out
+Collecting multidict<7.0,>=4.5 (from aiohttp->datasets)
+  Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.0 kB)
+Collecting propcache>=0.2.0 (from aiohttp->datasets)
+  Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.2 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp->datasets)
+  Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (69 kB)
+Collecting charset-normalizer<4,>=2 (from requests>=2.32.2->datasets)
+  Downloading charset_normalizer-3.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (35 kB)
+Collecting idna<4,>=2.5 (from requests>=2.32.2->datasets)
+  Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.32.2->datasets)
+  Downloading urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests>=2.32.2->datasets)
+  Downloading certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Downloading MarkupSafe-3.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Collecting python-dateutil>=2.8.2 (from pandas->datasets)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas->datasets)
+  Downloading pytz-2025.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->datasets)
+  Downloading tzdata-2025.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->datasets)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl (766.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 766.7/766.7 MB 187.6 MB/s eta 0:00:00
+Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl (363.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 363.4/363.4 MB 316.8 MB/s eta 0:00:00
+Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (13.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 331.1 MB/s eta 0:00:00
+Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (24.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.6/24.6 MB 263.1 MB/s eta 0:00:00
+Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (883 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.7/883.7 kB 707.7 MB/s eta 0:00:00
+Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 664.8/664.8 MB 324.5 MB/s eta 0:00:00
+Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl (211.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.5/211.5 MB 394.0 MB/s eta 0:00:00
+Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl (56.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.3/56.3 MB 202.3 MB/s eta 0:00:00
+Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl (127.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.9/127.9 MB 322.4 MB/s eta 0:00:00
+Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl (207.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.5/207.5 MB 377.7 MB/s eta 0:00:00
+Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl (150.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 150.1/150.1 MB 298.2 MB/s eta 0:00:00
+Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl (188.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 188.7/188.7 MB 392.8 MB/s eta 0:00:00
+Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (21.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.1/21.1 MB 313.8 MB/s eta 0:00:00
+Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (99 kB)
+Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 417.4 MB/s eta 0:00:00
+Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (253.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 253.1/253.1 MB 196.8 MB/s eta 0:00:00
+Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl (7.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 289.8 MB/s eta 0:00:00
+Downloading fsspec-2024.12.0-py3-none-any.whl (183 kB)
+Downloading aiohttp-3.11.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 524.6 MB/s eta 0:00:00
+Downloading numpy-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 309.4 MB/s eta 0:00:00
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (751 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 751.2/751.2 kB 719.2 MB/s eta 0:00:00
+Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Downloading filelock-3.17.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.5-py3-none-any.whl (134 kB)
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 683.3 MB/s eta 0:00:00
+Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 455.3 MB/s eta 0:00:00
+Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl (14 kB)
+Downloading aiosignal-1.3.2-py2.py3-none-any.whl (7.6 kB)
+Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Downloading attrs-25.1.0-py3-none-any.whl (63 kB)
+Downloading certifi-2025.1.31-py3-none-any.whl (166 kB)
+Downloading charset_normalizer-3.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (146 kB)
+Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (241 kB)
+Downloading idna-3.10-py3-none-any.whl (70 kB)
+Downloading MarkupSafe-3.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20 kB)
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 571.4 MB/s eta 0:00:00
+Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (124 kB)
+Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (205 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading pytz-2025.1-py2.py3-none-any.whl (507 kB)
+Downloading tzdata-2025.1-py2.py3-none-any.whl (346 kB)
+Downloading urllib3-2.3.0-py3-none-any.whl (128 kB)
+Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (319 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: triton, pytz, nvidia-cusparselt-cu12, mpmath, urllib3, tzdata, typing-extensions, sympy, six, pyyaml, propcache, packaging, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, MarkupSafe, idna, fsspec, frozenlist, filelock, charset-normalizer, certifi, attrs, async-timeout, aiohappyeyeballs, python-dateutil, nvidia-cusparse-cu12, nvidia-cudnn-cu12, multidict, jinja2, aiosignal, yarl, pandas, nvidia-cusolver-cu12, torch, aiohttp, torchvision
+  WARNING: The scripts proton and proton-viewer are installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script isympy is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts f2py and numpy-config are installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script normalizer is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299312   ice-gpu efficien jvennamr  R       2:49      1 atl1-1-01-005-7-0
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+[jvennamreddy3@login-ice-3 ~]$ cat slurm-1299312.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 11:55:16
+Job ID:    1299312
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) bzip2/1.0.8       4) libmd/1.0.4          7) util-linux-uuid/2.38.1
+  2) expat/2.5.0       5) libxcrypt/4.4.33     8) xz/5.4.1
+  3) libbsd/0.11.7     6) python/3.10.10
+
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Collecting torch
+  Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl.metadata (28 kB)
+Collecting torchvision
+  Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl.metadata (6.1 kB)
+Collecting filelock (from datasets)
+  Downloading filelock-3.17.0-py3-none-any.whl.metadata (2.9 kB)
+Collecting numpy>=1.17 (from datasets)
+  Downloading numpy-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Collecting pandas (from datasets)
+  Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Collecting fsspec<=2024.12.0,>=2023.1.0 (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets)
+  Downloading fsspec-2024.12.0-py3-none-any.whl.metadata (11 kB)
+Collecting aiohttp (from datasets)
+  Downloading aiohttp-3.11.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Collecting packaging (from datasets)
+  Downloading packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting pyyaml>=5.1 (from datasets)
+  Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting typing-extensions>=4.10.0 (from torch)
+  Downloading typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting networkx (from torch)
+  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting jinja2 (from torch)
+  Downloading jinja2-3.1.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting nvidia-cuda-nvrtc-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-runtime-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-cupti-cu12==12.4.127 (from torch)
+  Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cudnn-cu12==9.1.0.70 (from torch)
+  Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cublas-cu12==12.4.5.8 (from torch)
+  Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cufft-cu12==11.2.1.3 (from torch)
+  Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-curand-cu12==10.3.5.147 (from torch)
+  Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cusolver-cu12==11.6.1.9 (from torch)
+  Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparse-cu12==12.3.1.170 (from torch)
+  Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparselt-cu12==0.6.2 (from torch)
+  Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl.metadata (6.8 kB)
+Collecting nvidia-nccl-cu12==2.21.5 (from torch)
+  Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvtx-cu12==12.4.127 (from torch)
+  Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-nvjitlink-cu12==12.4.127 (from torch)
+  Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting triton==3.2.0 (from torch)
+  Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+Collecting sympy==1.13.1 (from torch)
+  Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy==1.13.1->torch)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Collecting aiohappyeyeballs>=2.3.0 (from aiohttp->datasets)
+  Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.1.2 (from aiohttp->datasets)
+  Downloading aiosignal-1.3.2-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp->datasets)
+  Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting attrs>=17.3.0 (from aiohttp->datasets)
+  Downloading attrs-25.1.0-py3-none-any.whl.metadata (10 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp->datasets)
+  Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp->datasets)
+  Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.0 kB)
+Collecting propcache>=0.2.0 (from aiohttp->datasets)
+  Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.2 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp->datasets)
+  Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (69 kB)
+Collecting charset-normalizer<4,>=2 (from requests>=2.32.2->datasets)
+  Downloading charset_normalizer-3.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (35 kB)
+Collecting idna<4,>=2.5 (from requests>=2.32.2->datasets)
+  Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.32.2->datasets)
+  Downloading urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests>=2.32.2->datasets)
+  Downloading certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Downloading MarkupSafe-3.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Collecting python-dateutil>=2.8.2 (from pandas->datasets)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas->datasets)
+  Downloading pytz-2025.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->datasets)
+  Downloading tzdata-2025.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->datasets)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl (766.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 766.7/766.7 MB 187.6 MB/s eta 0:00:00
+Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl (363.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 363.4/363.4 MB 316.8 MB/s eta 0:00:00
+Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (13.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 331.1 MB/s eta 0:00:00
+Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (24.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.6/24.6 MB 263.1 MB/s eta 0:00:00
+Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (883 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.7/883.7 kB 707.7 MB/s eta 0:00:00
+Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 664.8/664.8 MB 324.5 MB/s eta 0:00:00
+Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl (211.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.5/211.5 MB 394.0 MB/s eta 0:00:00
+Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl (56.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.3/56.3 MB 202.3 MB/s eta 0:00:00
+Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl (127.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.9/127.9 MB 322.4 MB/s eta 0:00:00
+Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl (207.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.5/207.5 MB 377.7 MB/s eta 0:00:00
+Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl (150.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 150.1/150.1 MB 298.2 MB/s eta 0:00:00
+Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl (188.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 188.7/188.7 MB 392.8 MB/s eta 0:00:00
+Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (21.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.1/21.1 MB 313.8 MB/s eta 0:00:00
+Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (99 kB)
+Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 417.4 MB/s eta 0:00:00
+Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (253.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 253.1/253.1 MB 196.8 MB/s eta 0:00:00
+Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl (7.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 289.8 MB/s eta 0:00:00
+Downloading fsspec-2024.12.0-py3-none-any.whl (183 kB)
+Downloading aiohttp-3.11.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 524.6 MB/s eta 0:00:00
+Downloading numpy-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 309.4 MB/s eta 0:00:00
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+Downloading PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (751 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 751.2/751.2 kB 719.2 MB/s eta 0:00:00
+Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Downloading filelock-3.17.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.5-py3-none-any.whl (134 kB)
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 683.3 MB/s eta 0:00:00
+Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 455.3 MB/s eta 0:00:00
+Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl (14 kB)
+Downloading aiosignal-1.3.2-py2.py3-none-any.whl (7.6 kB)
+Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Downloading attrs-25.1.0-py3-none-any.whl (63 kB)
+Downloading certifi-2025.1.31-py3-none-any.whl (166 kB)
+Downloading charset_normalizer-3.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (146 kB)
+Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (241 kB)
+Downloading idna-3.10-py3-none-any.whl (70 kB)
+Downloading MarkupSafe-3.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20 kB)
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 571.4 MB/s eta 0:00:00
+Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (124 kB)
+Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (205 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading pytz-2025.1-py2.py3-none-any.whl (507 kB)
+Downloading tzdata-2025.1-py2.py3-none-any.whl (346 kB)
+Downloading urllib3-2.3.0-py3-none-any.whl (128 kB)
+Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (319 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: triton, pytz, nvidia-cusparselt-cu12, mpmath, urllib3, tzdata, typing-extensions, sympy, six, pyyaml, propcache, packaging, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, MarkupSafe, idna, fsspec, frozenlist, filelock, charset-normalizer, certifi, attrs, async-timeout, aiohappyeyeballs, python-dateutil, nvidia-cusparse-cu12, nvidia-cudnn-cu12, multidict, jinja2, aiosignal, yarl, pandas, nvidia-cusolver-cu12, torch, aiohttp, torchvision
+  WARNING: The scripts proton and proton-viewer are installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script isympy is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts f2py and numpy-config are installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script normalizer is installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts torchfrtrace and torchrun are installed in '/home/hice1/jvennamreddy3/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+transformers 4.48.3 requires regex!=2019.12.17, which is not installed.
+Successfully installed MarkupSafe-3.0.2 aiohappyeyeballs-2.4.6 aiohttp-3.11.12 aiosignal-1.3.2 async-timeout-5.0.1 attrs-25.1.0 certifi-2025.1.31 charset-normalizer-3.4.1 filelock-3.17.0 frozenlist-1.5.0 fsspec-2024.12.0 idna-3.10 jinja2-3.1.5 mpmath-1.3.0 multidict-6.1.0 networkx-3.4.2 numpy-2.2.3 nvidia-cublas-cu12-12.4.5.8 nvidia-cuda-cupti-cu12-12.4.127 nvidia-cuda-nvrtc-cu12-12.4.127 nvidia-cuda-runtime-cu12-12.4.127 nvidia-cudnn-cu12-9.1.0.70 nvidia-cufft-cu12-11.2.1.3 nvidia-curand-cu12-10.3.5.147 nvidia-cusolver-cu12-11.6.1.9 nvidia-cusparse-cu12-12.3.1.170 nvidia-cusparselt-cu12-0.6.2 nvidia-nccl-cu12-2.21.5 nvidia-nvjitlink-cu12-12.4.127 nvidia-nvtx-cu12-12.4.127 packaging-24.2 pandas-2.2.3 propcache-0.2.1 python-dateutil-2.9.0.post0 pytz-2025.1 pyyaml-6.0.2 six-1.17.0 sympy-1.13.1 torch-2.6.0 torchvision-0.21.0 triton-3.2.0 typing-extensions-4.12.2 tzdata-2025.1 urllib3-2.3.0 yarl-1.18.3
+PYTHONPATH: /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages:
+Starting EfficientNet Benchmark...
+['', '/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages', '/home/hice1/jvennamreddy3', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python310.zip', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/lib-dynload', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/site-packages']
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/transformers/utils/versions.py", line 102, in require_version
+    got_ver = importlib.metadata.version(pkg)
+  File "/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/importlib/metadata/__init__.py", line 996, in version
+    return distribution(distribution_name).version
+  File "/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/importlib/metadata/__init__.py", line 969, in distribution
+    return Distribution.from_name(distribution_name)
+  File "/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/importlib/metadata/__init__.py", line 548, in from_name
+    raise PackageNotFoundError(name)
+importlib.metadata.PackageNotFoundError: No package metadata was found for regex
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hice1/jvennamreddy3/efficientnet_test.py", line 3, in <module>
+    from transformers import EfficientNetImageProcessor, EfficientNetForImageClassification
+  File "/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/transformers/__init__.py", line 26, in <module>
+    from . import dependency_versions_check
+  File "/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/transformers/dependency_versions_check.py", line 57, in <module>
+    require_version_core(deps[pkg])
+  File "/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/transformers/utils/versions.py", line 117, in require_version_core
+    return require_version(requirement, hint)
+  File "/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/transformers/utils/versions.py", line 104, in require_version
+    raise importlib.metadata.PackageNotFoundError(
+importlib.metadata.PackageNotFoundError: No package metadata was found for The 'regex!=2019.12.17' distribution was not found and is required by this application. 
+Try: `pip install transformers -U` or `pip install -e '.[dev]'` if you're working with git main
+Execution Complete.
+---------------------------------------
+Begin Slurm Epilog: Feb-16-2025 11:58:06
+Job ID:        1299312
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:02:51,vmem=0,walltime=00:02:51,mem=8762824K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-7-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-3 ~]$ sbatch efficientnet.slurm
+Submitted batch job 1299328
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299328   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299328   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-3 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299328   ice-gpu efficien jvennamr  R       0:06      1 atl1-1-01-005-7-0
+[jvennamreddy3@login-ice-3 ~]$ cat slurm-1299328.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 12:00:18
+Job ID:    1299328
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) bzip2/1.0.8       4) libmd/1.0.4          7) util-linux-uuid/2.38.1
+  2) expat/2.5.0       5) libxcrypt/4.4.33     8) xz/5.4.1
+  3) libbsd/0.11.7     6) python/3.10.10
+
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Requirement already satisfied: torch in ./.local/lib/python3.10/site-packages (2.6.0)
+Requirement already satisfied: torchvision in ./.local/lib/python3.10/site-packages (0.21.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Collecting regex
+  Downloading regex-2024.11.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (40 kB)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from datasets) (3.17.0)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Requirement already satisfied: pandas in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Requirement already satisfied: fsspec<=2024.12.0,>=2023.1.0 in ./.local/lib/python3.10/site-packages (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets) (2024.12.0)
+Requirement already satisfied: aiohttp in ./.local/lib/python3.10/site-packages (from datasets) (3.11.12)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Requirement already satisfied: packaging in ./.local/lib/python3.10/site-packages (from datasets) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from datasets) (6.0.2)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./.local/lib/python3.10/site-packages (from torch) (4.12.2)
+Requirement already satisfied: networkx in ./.local/lib/python3.10/site-packages (from torch) (3.4.2)
+Requirement already satisfied: jinja2 in ./.local/lib/python3.10/site-packages (from torch) (3.1.5)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in ./.local/lib/python3.10/site-packages (from torch) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in ./.local/lib/python3.10/site-packages (from torch) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in ./.local/lib/python3.10/site-packages (from torch) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in ./.local/lib/python3.10/site-packages (from torch) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in ./.local/lib/python3.10/site-packages (from torch) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in ./.local/lib/python3.10/site-packages (from torch) (12.3.1.170)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in ./.local/lib/python3.10/site-packages (from torch) (0.6.2)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in ./.local/lib/python3.10/site-packages (from torch) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in ./.local/lib/python3.10/site-packages (from torch) (3.2.0)
+Requirement already satisfied: sympy==1.13.1 in ./.local/lib/python3.10/site-packages (from torch) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./.local/lib/python3.10/site-packages (from sympy==1.13.1->torch) (1.3.0)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (2.4.6)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.3.2)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (5.0.1)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (25.1.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (0.2.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.18.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2025.1.31)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
+Downloading regex-2024.11.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (781 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 781.7/781.7 kB 23.7 MB/s eta 0:00:00
+Installing collected packages: regex
+Successfully installed regex-2024.11.6
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from transformers) (3.17.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.24.0 in ./.local/lib/python3.10/site-packages (from transformers) (0.28.1)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from transformers) (2.2.3)
+Requirement already satisfied: packaging>=20.0 in ./.local/lib/python3.10/site-packages (from transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./.local/lib/python3.10/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: tqdm>=4.27 in ./.local/lib/python3.10/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (2024.12.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2025.1.31)
+PYTHONPATH: /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages:
+Starting EfficientNet Benchmark...
+['', '/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages', '/home/hice1/jvennamreddy3', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python310.zip', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/lib-dynload', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/site-packages']
+Predicted Label: tabby, tabby cat
+Execution Complete.
+---------------------------------------
+Begin Slurm Epilog: Feb-16-2025 12:00:44
+Job ID:        1299328
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:27,vmem=0,walltime=00:00:27,mem=945260K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-7-0
+---------------------------------------
+[jvennamreddy3@login-ice-3 ~]$ client_loop: send disconnect: Broken pipe
+(base) jayanth@Jayanths-MBP ~ % ssh jvennamreddy3@login-ice.pace.gatech.edu
+jvennamreddy3@login-ice.pace.gatech.edu's password: 
+Terms of Use
+
+This computer system is the property of Georgia Institute of
+Technology.  Any user of this system must comply with all Institute
+and Board of Regents policies, including the Acceptable Use
+Policy (AUP), Data Privacy Policy (DPP) and Cyber Security
+Policy (CSP), see http://b.gatech.edu/it-policies.  Users should
+have no expectation of privacy, as any and all files on this system
+may be intercepted, monitored, copied, inspected, and/or disclosed to
+authorized personnel in order to meet institute obligations.
+
+By using this system, I acknowledge and consent to these terms.
+
+#######################################
+# Welcome to GT Instructional Cluster #
+#######################################
+
+If you require assistance with this system, please contact your
+course instructor or teaching assistant (TA).
+[jvennamreddy3@login-ice-1 ~]$ lscpu
+Architecture:             x86_64
+  CPU op-mode(s):         32-bit, 64-bit
+  Address sizes:          46 bits physical, 48 bits virtual
+  Byte Order:             Little Endian
+CPU(s):                   24
+  On-line CPU(s) list:    0-23
+Vendor ID:                GenuineIntel
+  Model name:             Intel(R) Xeon(R) Gold 6226 CPU @ 2.70GHz
+    CPU family:           6
+    Model:                85
+    Thread(s) per core:   1
+    Core(s) per socket:   12
+    Socket(s):            2
+    Stepping:             7
+    CPU(s) scaling MHz:   73%
+    CPU max MHz:          3700.0000
+    CPU min MHz:          1200.0000
+    BogoMIPS:             5400.00
+    Flags:                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge m
+                          ca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 s
+                          s ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc 
+                          art arch_perfmon pebs bts rep_good nopl xtopology nons
+                          top_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor 
+                          ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm p
+                          cid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline
+                          _timer aes xsave avx f16c rdrand lahf_lm abm 3dnowpref
+                          etch cpuid_fault epb cat_l3 cdp_l3 intel_ppin ssbd mba
+                           ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority
+                           ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bm
+                          i2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed 
+                          adx smap clflushopt clwb intel_pt avx512cd avx512bw av
+                          x512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occu
+                          p_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln 
+                          pts hwp hwp_act_window hwp_epp hwp_pkg_req vnmi pku os
+                          pke avx512_vnni md_clear flush_l1d arch_capabilities
+Virtualization features:  
+  Virtualization:         VT-x
+Caches (sum of all):      
+  L1d:                    768 KiB (24 instances)
+  L1i:                    768 KiB (24 instances)
+  L2:                     24 MiB (24 instances)
+  L3:                     38.5 MiB (2 instances)
+NUMA:                     
+  NUMA node(s):           2
+  NUMA node0 CPU(s):      0-11
+  NUMA node1 CPU(s):      12-23
+Vulnerabilities:          
+  Gather data sampling:   Vulnerable
+  Itlb multihit:          KVM: Mitigation: VMX disabled
+  L1tf:                   Not affected
+  Mds:                    Not affected
+  Meltdown:               Not affected
+  Mmio stale data:        Vulnerable
+  Reg file data sampling: Not affected
+  Retbleed:               Vulnerable
+  Spec rstack overflow:   Not affected
+  Spec store bypass:      Vulnerable
+  Spectre v1:             Vulnerable: __user pointer sanitization and usercopy b
+                          arriers only; no swapgs barriers
+  Spectre v2:             Vulnerable; IBPB: disabled; STIBP: disabled; PBRSB-eIB
+                          RS: Vulnerable; BHI: Vulnerable
+  Srbds:                  Not affected
+  Tsx async abort:        Mitigation; TSX disabled
+[jvennamreddy3@login-ice-1 ~]$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           187Gi        10Gi       111Gi       512Mi        66Gi       176Gi
+Swap:          8.0Gi       1.7Gi       6.3Gi
+[jvennamreddy3@login-ice-1 ~]$ nvidia-smi
+-bash: nvidia-smi: command not found
+[jvennamreddy3@login-ice-1 ~]$ rocm-smi --showproduct
+-bash: rocm-smi: command not found
+[jvennamreddy3@login-ice-1 ~]$ nvidia-smi -L
+-bash: nvidia-smi: command not found
+[jvennamreddy3@login-ice-1 ~]$ env | grep -i gpu
+[jvennamreddy3@login-ice-1 ~]$ sinfo -o "%N %G"
+NODELIST GRES
+atl1-1-01-005-1-[1-2],atl1-1-01-005-2-[1-2],atl1-1-01-005-3-[1-2],atl1-1-01-005-4-[1-2],atl1-1-02-003-19-[1-2],atl1-1-02-003-20-1,atl1-1-02-004-15-2,atl1-1-02-010-1-[1-2],atl1-1-02-010-2-[1-2],atl1-1-02-010-3-[1-2],atl1-1-02-010-4-[1-2],atl1-1-02-010-5-[1-2],atl1-1-02-010-6-[1-2],atl1-1-02-010-7-[1-2],atl1-1-02-010-8-1,atl1-1-02-012-5-[1-2],atl1-1-02-012-6-[1-2],atl1-1-02-012-7-[1-2],atl1-1-02-012-8-[1-2],atl1-1-02-012-9-[1-2],atl1-1-02-012-10-[1-2],atl1-1-02-012-11-1,atl1-1-03-003-16-[1-2],atl1-1-03-004-5-[1-2],atl1-1-03-007-19-[1-2],atl1-1-03-007-20-[1-2],atl1-1-03-007-21-[1-2],atl1-1-03-007-22-[1-2],atl1-1-03-007-23-[1-2],atl1-1-03-007-24-[1-2],atl1-1-03-007-25-[1-2],atl1-1-03-007-26-[1-2],atl1-1-03-007-27-[1-2],atl1-1-03-007-28-[1-2] (null)
+atl1-1-01-005-13-0,atl1-1-01-005-15-0,atl1-1-03-007-33-0,atl1-1-03-007-35-0 gpu:a100:2(S:2,5)
+atl1-1-01-002-1-0,atl1-1-01-002-2-0,atl1-1-01-002-3-0,atl1-1-01-002-4-0 gpu:v100:1(S:0)
+atl1-1-01-002-5-0,atl1-1-01-002-6-0,atl1-1-01-002-7-0,atl1-1-01-002-8-0 gpu:v100:4(S:0-1)
+atl1-1-01-005-9-0,atl1-1-01-005-11-0 gpu:a40:2(S:2,5)
+atl1-1-02-009-31-0,atl1-1-02-009-32-0,atl1-1-02-009-33-0,atl1-1-02-010-31-0,atl1-1-02-010-32-0,atl1-1-02-010-33-0,atl1-1-02-010-34-0,atl1-1-02-010-35-0,atl1-1-02-010-36-0,atl1-1-02-011-31-0,atl1-1-02-011-32-0 gpu:v100:2(S:0-1)
+atl1-1-03-004-25-0 gpu:l40s:8(S:0-1)
+atl1-1-01-005-5-0,atl1-1-01-005-7-0 gpu:rtx_6000:4(S:0-1)
+atl1-1-03-004-21-0,atl1-1-03-004-23-0,atl1-1-03-004-27-0 gpu:l40s:8(S:0-3)
+atl1-1-01-005-17-0,atl1-1-01-005-19-0 gpu:mi210:2
+atl1-1-03-013-19-0,atl1-1-03-013-26-0,atl1-1-03-014-2-0,atl1-1-03-014-9-0,atl1-1-03-014-16-0,atl1-1-03-014-23-0,atl1-1-03-014-30-0,atl1-1-03-015-2-0,atl1-1-03-015-9-0,atl1-1-03-015-16-0,atl1-1-03-015-23-0,atl1-1-03-015-30-0,atl1-1-03-017-2-0,atl1-1-03-017-9-0,atl1-1-03-017-16-0,atl1-1-03-017-23-0,atl1-1-03-017-30-0,atl1-1-03-018-2-0 gpu:h200:8(S:0-1)
+atl1-1-03-010-10-0,atl1-1-03-010-15-0,atl1-1-03-010-20-0,atl1-1-03-010-25-0,atl1-1-03-010-30-0,atl1-1-03-011-3-0,atl1-1-03-011-8-0,atl1-1-03-011-13-0,atl1-1-03-011-18-0,atl1-1-03-011-23-0,atl1-1-03-011-28-0,atl1-1-03-012-3-0 gpu:h100:8(S:0,2)
+atl1-1-03-012-8-0,atl1-1-03-012-13-0,atl1-1-03-012-18-0,atl1-1-03-012-23-0,atl1-1-03-012-28-0,atl1-1-03-013-3-0,atl1-1-03-013-8-0,atl1-1-03-013-13-0 gpu:h100:8(S:0-1)
+[jvennamreddy3@login-ice-1 ~]$ scontrol show node atl1-1-01-005-5-0
+NodeName=atl1-1-01-005-5-0 Arch=x86_64 CoresPerSocket=12 
+   CPUAlloc=24 CPUEfctv=24 CPUTot=24 CPULoad=3.75
+   AvailableFeatures=rhel9,intel,localNVMe,core24,mhz2700,gold6226,nvidia-gpu,RTX6000,gpu-rtx6000
+   ActiveFeatures=rhel9,intel,localNVMe,core24,mhz2700,gold6226,nvidia-gpu,RTX6000,gpu-rtx6000
+   Gres=gpu:rtx_6000:4(S:0-1)
+   NodeAddr=atl1-1-01-005-5-0 NodeHostName=atl1-1-01-005-5-0 Version=24.11.1
+   OS=Linux 5.14.0-427.42.1.el9_4.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Oct 18 14:35:40 EDT 2024 
+   RealMemory=385000 AllocMem=262144 FreeMem=291126 Sockets=2 Boards=1
+   MemSpecLimit=8192
+   State=ALLOCATED ThreadsPerCore=1 TmpDisk=1698746 Weight=1 Owner=N/A MCS_label=N/A
+   Partitions=coc-gpu,pace-gpu,ice-gpu 
+   BootTime=2025-01-15T17:38:44 SlurmdStartTime=2025-02-12T09:42:04
+   LastBusyTime=2025-02-15T23:58:47 ResumeAfterTime=None
+   CfgTRES=cpu=24,mem=385000M,billing=24,gres/gpu=4,gres/gpu:rtx_6000=4
+   AllocTRES=cpu=24,mem=256G,gres/gpu=2,gres/gpu:rtx_6000=2
+   CurrentWatts=0 AveWatts=0
+   
+
+[jvennamreddy3@login-ice-1 ~]$ scontrol show node atl1-1-01-005-5-0
+NodeName=atl1-1-01-005-5-0 Arch=x86_64 CoresPerSocket=12 
+   CPUAlloc=24 CPUEfctv=24 CPUTot=24 CPULoad=3.54
+   AvailableFeatures=rhel9,intel,localNVMe,core24,mhz2700,gold6226,nvidia-gpu,RTX6000,gpu-rtx6000
+   ActiveFeatures=rhel9,intel,localNVMe,core24,mhz2700,gold6226,nvidia-gpu,RTX6000,gpu-rtx6000
+   Gres=gpu:rtx_6000:4(S:0-1)
+   NodeAddr=atl1-1-01-005-5-0 NodeHostName=atl1-1-01-005-5-0 Version=24.11.1
+   OS=Linux 5.14.0-427.42.1.el9_4.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Oct 18 14:35:40 EDT 2024 
+   RealMemory=385000 AllocMem=262144 FreeMem=291118 Sockets=2 Boards=1
+   MemSpecLimit=8192
+   State=ALLOCATED ThreadsPerCore=1 TmpDisk=1698746 Weight=1 Owner=N/A MCS_label=N/A
+   Partitions=coc-gpu,pace-gpu,ice-gpu 
+   BootTime=2025-01-15T17:38:44 SlurmdStartTime=2025-02-12T09:42:04
+   LastBusyTime=2025-02-15T23:58:47 ResumeAfterTime=None
+   CfgTRES=cpu=24,mem=385000M,billing=24,gres/gpu=4,gres/gpu:rtx_6000=4
+   AllocTRES=cpu=24,mem=256G,gres/gpu=2,gres/gpu:rtx_6000=2
+   CurrentWatts=0 AveWatts=0
+   
+
+[jvennamreddy3@login-ice-1 ~]$ client_loop: send disconnect: Broken pipe
+(base) jayanth@Jayanths-MBP ~ % ssh jvennamreddy3@login-ice.pace.gatech.edu
+
+jvennamreddy3@login-ice.pace.gatech.edu's password: 
+Terms of Use
+
+This computer system is the property of Georgia Institute of
+Technology.  Any user of this system must comply with all Institute
+and Board of Regents policies, including the Acceptable Use
+Policy (AUP), Data Privacy Policy (DPP) and Cyber Security
+Policy (CSP), see http://b.gatech.edu/it-policies.  Users should
+have no expectation of privacy, as any and all files on this system
+may be intercepted, monitored, copied, inspected, and/or disclosed to
+authorized personnel in order to meet institute obligations.
+
+By using this system, I acknowledge and consent to these terms.
+
+#######################################
+# Welcome to GT Instructional Cluster #
+#######################################
+
+If you require assistance with this system, please contact your
+course instructor or teaching assistant (TA).
+[jvennamreddy3@login-ice-2 ~]$ python --version
+Python 3.9.18
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet_cpu.slurm
+[jvennamreddy3@login-ice-2 ~]$ sbatch efficientnet_cpu.slurm
+Submitted batch job 1299720
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299720   ice-cpu efficien jvennamr  R       0:09      1 atl1-1-03-004-5-1
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299720   ice-cpu efficien jvennamr  R       0:13      1 atl1-1-03-004-5-1
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299720   ice-cpu efficien jvennamr  R       0:14      1 atl1-1-03-004-5-1
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299720   ice-cpu efficien jvennamr  R       0:16      1 atl1-1-03-004-5-1
+[jvennamreddy3@login-ice-2 ~]$ sacct -j 1299720 --format=JobID,JobName,State,ExitCode,Elapsed,MaxRSS,NodeList
+
+JobID           JobName      State ExitCode    Elapsed     MaxRSS        NodeList 
+------------ ---------- ---------- -------- ---------- ---------- --------------- 
+1299720      efficient+  COMPLETED      0:0   00:00:29            atl1-1-03-004-+ 
+1299720.bat+      batch  COMPLETED      0:0   00:00:29   1371548K atl1-1-03-004-+ 
+1299720.ext+     extern  COMPLETED      0:0   00:00:29       256K atl1-1-03-004-+ 
+[jvennamreddy3@login-ice-2 ~]$ output-1299720.txt
+-bash: output-1299720.txt: command not found
+[jvennamreddy3@login-ice-2 ~]$ cat output-1299720.txt
+cat: output-1299720.txt: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1299720.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 13:53:50
+Job ID:    1299720
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test_cpu
+Partition: ice-cpu
+QOS:       coe-ice
+---------------------------------------
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Requirement already satisfied: torch in ./.local/lib/python3.10/site-packages (2.6.0)
+Requirement already satisfied: torchvision in ./.local/lib/python3.10/site-packages (0.21.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from datasets) (3.17.0)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Requirement already satisfied: pandas in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Requirement already satisfied: fsspec<=2024.12.0,>=2023.1.0 in ./.local/lib/python3.10/site-packages (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets) (2024.12.0)
+Requirement already satisfied: aiohttp in ./.local/lib/python3.10/site-packages (from datasets) (3.11.12)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Requirement already satisfied: packaging in ./.local/lib/python3.10/site-packages (from datasets) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from datasets) (6.0.2)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./.local/lib/python3.10/site-packages (from torch) (4.12.2)
+Requirement already satisfied: networkx in ./.local/lib/python3.10/site-packages (from torch) (3.4.2)
+Requirement already satisfied: jinja2 in ./.local/lib/python3.10/site-packages (from torch) (3.1.5)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in ./.local/lib/python3.10/site-packages (from torch) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in ./.local/lib/python3.10/site-packages (from torch) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in ./.local/lib/python3.10/site-packages (from torch) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in ./.local/lib/python3.10/site-packages (from torch) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in ./.local/lib/python3.10/site-packages (from torch) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in ./.local/lib/python3.10/site-packages (from torch) (12.3.1.170)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in ./.local/lib/python3.10/site-packages (from torch) (0.6.2)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in ./.local/lib/python3.10/site-packages (from torch) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in ./.local/lib/python3.10/site-packages (from torch) (3.2.0)
+Requirement already satisfied: sympy==1.13.1 in ./.local/lib/python3.10/site-packages (from torch) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./.local/lib/python3.10/site-packages (from sympy==1.13.1->torch) (1.3.0)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (2.4.6)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.3.2)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (5.0.1)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (25.1.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (0.2.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.18.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2025.1.31)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from transformers) (3.17.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.24.0 in ./.local/lib/python3.10/site-packages (from transformers) (0.28.1)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from transformers) (2.2.3)
+Requirement already satisfied: packaging>=20.0 in ./.local/lib/python3.10/site-packages (from transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./.local/lib/python3.10/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: tqdm>=4.27 in ./.local/lib/python3.10/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (2024.12.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2025.1.31)
+PYTHONPATH: /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages:
+Starting EfficientNet Benchmark on CPU...
+['', '/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages', '/home/hice1/jvennamreddy3', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python310.zip', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/lib-dynload', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/site-packages']
+Predicted Label: tabby, tabby cat
+Execution Complete.
+---------------------------------------
+Begin Slurm Epilog: Feb-16-2025 13:54:19
+Job ID:        1299720
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test_cpu
+Resources:     cpu=24,mem=187G,node=1
+Rsrc Used:     cput=00:11:36,vmem=0,walltime=00:00:29,mem=1371548K,energy_used=0
+Partition:     ice-cpu
+QOS:           coe-ice
+Nodes:         atl1-1-03-004-5-1
+---------------------------------------
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet_cpu.slurm
+[jvennamreddy3@login-ice-2 ~]$ scp efficientnet_test.py jvennamreddy3@login-ice.pace.gatech.edu:/home/hice1/jvennamreddy3/
+efficientnet_test.py                         100%  805     1.3MB/s   00:00    
+[jvennamreddy3@login-ice-2 ~]$ sbatch efficientnet.slurm
+Submitted batch job 1299822
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1299822.out
+cat: slurm-1299822.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ slurm-1299822.out
+-bash: slurm-1299822.out: command not found
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet_cpu.slurm
+[jvennamreddy3@login-ice-2 ~]$ sbatch efficientnet.slurm
+Submitted batch job 1299871
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1299871   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299822   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1299871   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299871   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1299871.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 14:32:49
+Job ID:    1299871
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Requirement already satisfied: torch in ./.local/lib/python3.10/site-packages (2.6.0)
+Requirement already satisfied: torchvision in ./.local/lib/python3.10/site-packages (0.21.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: regex in ./.local/lib/python3.10/site-packages (2024.11.6)
+Collecting psutil
+  Downloading psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from datasets) (3.17.0)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Requirement already satisfied: pandas in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Requirement already satisfied: fsspec<=2024.12.0,>=2023.1.0 in ./.local/lib/python3.10/site-packages (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets) (2024.12.0)
+Requirement already satisfied: aiohttp in ./.local/lib/python3.10/site-packages (from datasets) (3.11.12)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Requirement already satisfied: packaging in ./.local/lib/python3.10/site-packages (from datasets) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from datasets) (6.0.2)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./.local/lib/python3.10/site-packages (from torch) (4.12.2)
+Requirement already satisfied: networkx in ./.local/lib/python3.10/site-packages (from torch) (3.4.2)
+Requirement already satisfied: jinja2 in ./.local/lib/python3.10/site-packages (from torch) (3.1.5)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in ./.local/lib/python3.10/site-packages (from torch) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in ./.local/lib/python3.10/site-packages (from torch) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in ./.local/lib/python3.10/site-packages (from torch) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in ./.local/lib/python3.10/site-packages (from torch) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in ./.local/lib/python3.10/site-packages (from torch) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in ./.local/lib/python3.10/site-packages (from torch) (12.3.1.170)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in ./.local/lib/python3.10/site-packages (from torch) (0.6.2)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in ./.local/lib/python3.10/site-packages (from torch) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in ./.local/lib/python3.10/site-packages (from torch) (3.2.0)
+Requirement already satisfied: sympy==1.13.1 in ./.local/lib/python3.10/site-packages (from torch) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./.local/lib/python3.10/site-packages (from sympy==1.13.1->torch) (1.3.0)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (2.4.6)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.3.2)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (5.0.1)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (25.1.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (0.2.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.18.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2025.1.31)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
+Downloading psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (277 kB)
+Installing collected packages: psutil
+Successfully installed psutil-7.0.0
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from transformers) (3.17.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.24.0 in ./.local/lib/python3.10/site-packages (from transformers) (0.28.1)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from transformers) (2.2.3)
+Requirement already satisfied: packaging>=20.0 in ./.local/lib/python3.10/site-packages (from transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./.local/lib/python3.10/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: tqdm>=4.27 in ./.local/lib/python3.10/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (2024.12.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2025.1.31)
+PYTHONPATH: /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages:
+Starting EfficientNet Benchmark...
+['', '/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages', '/home/hice1/jvennamreddy3', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python310.zip', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/lib-dynload', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/site-packages']
+Predicted Label: tabby, tabby cat
+Execution Complete.
+---------------------------------------
+Begin Slurm Epilog: Feb-16-2025 14:33:12
+Job ID:        1299871
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:24,vmem=0,walltime=00:00:24,mem=666572K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-7-0
+---------------------------------------
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-2 ~]$ 
+[jvennamreddy3@login-ice-2 ~]$ sbatch efficientnet.slurm
+Submitted batch job 1299886
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1299886.out
+cat: slurm-1299886.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ slurm-1299886.out
+-bash: slurm-1299886.out: command not found
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1299886.out
+cat: slurm-1299886.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1299886.out
+cat: slurm-1299886.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -j 1299886
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -j 1299886
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -j 1299886
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -j 1299886
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3 -o "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R"
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299886   ice-gpu efficien jvennamr PD       0:00      1 (Resources)
+[jvennamreddy3@login-ice-2 ~]$ squeue -j 1299886
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1299886.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 14:45:00
+Job ID:    1299886
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Requirement already satisfied: torch in ./.local/lib/python3.10/site-packages (2.6.0)
+Requirement already satisfied: torchvision in ./.local/lib/python3.10/site-packages (0.21.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: psutil in ./.local/lib/python3.10/site-packages (7.0.0)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from datasets) (3.17.0)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Requirement already satisfied: pandas in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Requirement already satisfied: fsspec<=2024.12.0,>=2023.1.0 in ./.local/lib/python3.10/site-packages (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets) (2024.12.0)
+Requirement already satisfied: aiohttp in ./.local/lib/python3.10/site-packages (from datasets) (3.11.12)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Requirement already satisfied: packaging in ./.local/lib/python3.10/site-packages (from datasets) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from datasets) (6.0.2)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./.local/lib/python3.10/site-packages (from torch) (4.12.2)
+Requirement already satisfied: networkx in ./.local/lib/python3.10/site-packages (from torch) (3.4.2)
+Requirement already satisfied: jinja2 in ./.local/lib/python3.10/site-packages (from torch) (3.1.5)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in ./.local/lib/python3.10/site-packages (from torch) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in ./.local/lib/python3.10/site-packages (from torch) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in ./.local/lib/python3.10/site-packages (from torch) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in ./.local/lib/python3.10/site-packages (from torch) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in ./.local/lib/python3.10/site-packages (from torch) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in ./.local/lib/python3.10/site-packages (from torch) (12.3.1.170)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in ./.local/lib/python3.10/site-packages (from torch) (0.6.2)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in ./.local/lib/python3.10/site-packages (from torch) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in ./.local/lib/python3.10/site-packages (from torch) (3.2.0)
+Requirement already satisfied: sympy==1.13.1 in ./.local/lib/python3.10/site-packages (from torch) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./.local/lib/python3.10/site-packages (from sympy==1.13.1->torch) (1.3.0)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (2.4.6)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.3.2)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (5.0.1)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (25.1.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (0.2.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.18.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2025.1.31)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from transformers) (3.17.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.24.0 in ./.local/lib/python3.10/site-packages (from transformers) (0.28.1)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from transformers) (2.2.3)
+Requirement already satisfied: packaging>=20.0 in ./.local/lib/python3.10/site-packages (from transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./.local/lib/python3.10/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: tqdm>=4.27 in ./.local/lib/python3.10/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (2024.12.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2025.1.31)
+PYTHONPATH: /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages:
+Starting EfficientNet Benchmark...
+['', '/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages', '/home/hice1/jvennamreddy3', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python310.zip', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/lib-dynload', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/site-packages']
+Predicted Label: tabby, tabby cat
+Execution Complete.
+Peak GPU Memory Usage:
+ 1 MiB
+---------------------------------------
+Begin Slurm Epilog: Feb-16-2025 14:45:21
+Job ID:        1299886
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test
+Resources:     cpu=1,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:00:22,vmem=0,walltime=00:00:22,mem=688156K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-7-0
+---------------------------------------
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet_cpu.slurm
+[jvennamreddy3@login-ice-2 ~]$ sbatch efficientnet_cpu.slurm
+Submitted batch job 1299902
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1299902   ice-cpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1299902.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 14:51:16
+Job ID:    1299902
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_test_cpu
+Partition: ice-cpu
+QOS:       coe-ice
+---------------------------------------
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Requirement already satisfied: torch in ./.local/lib/python3.10/site-packages (2.6.0)
+Requirement already satisfied: torchvision in ./.local/lib/python3.10/site-packages (0.21.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: psutil in ./.local/lib/python3.10/site-packages (7.0.0)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from datasets) (3.17.0)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Requirement already satisfied: pandas in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Requirement already satisfied: fsspec<=2024.12.0,>=2023.1.0 in ./.local/lib/python3.10/site-packages (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets) (2024.12.0)
+Requirement already satisfied: aiohttp in ./.local/lib/python3.10/site-packages (from datasets) (3.11.12)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Requirement already satisfied: packaging in ./.local/lib/python3.10/site-packages (from datasets) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from datasets) (6.0.2)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./.local/lib/python3.10/site-packages (from torch) (4.12.2)
+Requirement already satisfied: networkx in ./.local/lib/python3.10/site-packages (from torch) (3.4.2)
+Requirement already satisfied: jinja2 in ./.local/lib/python3.10/site-packages (from torch) (3.1.5)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in ./.local/lib/python3.10/site-packages (from torch) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in ./.local/lib/python3.10/site-packages (from torch) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in ./.local/lib/python3.10/site-packages (from torch) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in ./.local/lib/python3.10/site-packages (from torch) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in ./.local/lib/python3.10/site-packages (from torch) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in ./.local/lib/python3.10/site-packages (from torch) (12.3.1.170)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in ./.local/lib/python3.10/site-packages (from torch) (0.6.2)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in ./.local/lib/python3.10/site-packages (from torch) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in ./.local/lib/python3.10/site-packages (from torch) (3.2.0)
+Requirement already satisfied: sympy==1.13.1 in ./.local/lib/python3.10/site-packages (from torch) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./.local/lib/python3.10/site-packages (from sympy==1.13.1->torch) (1.3.0)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (2.4.6)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.3.2)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (5.0.1)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (25.1.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (0.2.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.18.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2025.1.31)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from transformers) (3.17.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.24.0 in ./.local/lib/python3.10/site-packages (from transformers) (0.28.1)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from transformers) (2.2.3)
+Requirement already satisfied: packaging>=20.0 in ./.local/lib/python3.10/site-packages (from transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./.local/lib/python3.10/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: tqdm>=4.27 in ./.local/lib/python3.10/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (2024.12.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2025.1.31)
+PYTHONPATH: /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages:
+Starting EfficientNet Benchmark on CPU...
+['', '/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages', '/home/hice1/jvennamreddy3', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python310.zip', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/lib-dynload', '/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.10.10-3udzu6x4ehl4hglrzjzujjadkhcf7vvz/lib/python3.10/site-packages']
+Memory Usage: 7323/772154MB (0.95%)
+Memory Usage: 7472/772154MB (0.97%)
+Memory Usage: 7505/772154MB (0.97%)
+Memory Usage: 7523/772154MB (0.97%)
+Memory Usage: 7563/772154MB (0.98%)
+Memory Usage: 7585/772154MB (0.98%)
+Memory Usage: 7586/772154MB (0.98%)
+Memory Usage: 7595/772154MB (0.98%)
+Memory Usage: 7623/772154MB (0.99%)
+Memory Usage: 7642/772154MB (0.99%)
+Memory Usage: 7657/772154MB (0.99%)
+Predicted Label: tabby, tabby cat
+Memory Usage: 7783/772154MB (1.01%)
+Execution Time: 12.194361665 seconds
+Execution Complete.
+Memory Usage: 7293/772154MB (0.94%)
+---------------------------------------
+Begin Slurm Epilog: Feb-16-2025 14:51:36
+Job ID:        1299902
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_test_cpu
+Resources:     cpu=24,mem=187G,node=1
+Rsrc Used:     cput=00:08:00,vmem=0,walltime=00:00:20,mem=721888K,energy_used=0
+Partition:     ice-cpu
+QOS:           coe-ice
+Nodes:         atl1-1-03-004-5-1
+---------------------------------------
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet_multi_gpu.slurm
+[jvennamreddy3@login-ice-2 ~]$ sbatch efficientnet_multi_gpu.slurm
+Submitted batch job 1300013
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ [jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+-bash: [jvennamreddy3@login-ice-2: command not found
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+cat: slurm-1300013.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+cat: slurm-1300013.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+slurm_load_jobs error: Socket timed out on send/recv operation
+[jvennamreddy3@login-ice-2 ~]$ [jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+slurm_load_jobs error: Socket timed out on send/recv operation
+-bash: [jvennamreddy3@login-ice-2: command not found
+-bash: slurm_load_jobs: command not found
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+cat: slurm-1300013.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+cat: slurm-1300013.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+cat: slurm-1300013.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+cat: slurm-1300013.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+cat: slurm-1300013.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+cat: slurm-1300013.out: No such file or directory
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-2 ~]$ sbatch efficientnet.slurm
+Submitted batch job 1300087
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Priority)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Resources)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Resources)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Resources)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Resources)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1300013   ice-gpu efficien jvennamr PD       0:00      1 (Resources)
+           1300087   ice-gpu efficien jvennamr PD       0:00      1 (Resources)
+[jvennamreddy3@login-ice-2 ~]$ squeue -u jvennamreddy3
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+[jvennamreddy3@login-ice-2 ~]$ cat slurm-1300013.out
+---------------------------------------
+Begin Slurm Prolog: Feb-16-2025 16:02:59
+Job ID:    1300013
+User ID:   jvennamreddy3
+Account:   coc
+Job name:  efficientnet_multi_gpu
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Python 3.10.10
+pip 25.0.1 from /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/pip (python 3.10)
+Requirement already satisfied: datasets in ./.local/lib/python3.10/site-packages (3.3.0)
+Requirement already satisfied: torch in ./.local/lib/python3.10/site-packages (2.6.0)
+Requirement already satisfied: torchvision in ./.local/lib/python3.10/site-packages (0.21.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from datasets) (3.17.0)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: pyarrow>=15.0.0 in ./.local/lib/python3.10/site-packages (from datasets) (19.0.0)
+Requirement already satisfied: dill<0.3.9,>=0.3.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.3.8)
+Requirement already satisfied: pandas in ./.local/lib/python3.10/site-packages (from datasets) (2.2.3)
+Requirement already satisfied: requests>=2.32.2 in ./.local/lib/python3.10/site-packages (from datasets) (2.32.3)
+Requirement already satisfied: tqdm>=4.66.3 in ./.local/lib/python3.10/site-packages (from datasets) (4.67.1)
+Requirement already satisfied: xxhash in ./.local/lib/python3.10/site-packages (from datasets) (3.5.0)
+Requirement already satisfied: multiprocess<0.70.17 in ./.local/lib/python3.10/site-packages (from datasets) (0.70.16)
+Requirement already satisfied: fsspec<=2024.12.0,>=2023.1.0 in ./.local/lib/python3.10/site-packages (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets) (2024.12.0)
+Requirement already satisfied: aiohttp in ./.local/lib/python3.10/site-packages (from datasets) (3.11.12)
+Requirement already satisfied: huggingface-hub>=0.24.0 in ./.local/lib/python3.10/site-packages (from datasets) (0.28.1)
+Requirement already satisfied: packaging in ./.local/lib/python3.10/site-packages (from datasets) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from datasets) (6.0.2)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./.local/lib/python3.10/site-packages (from torch) (4.12.2)
+Requirement already satisfied: networkx in ./.local/lib/python3.10/site-packages (from torch) (3.4.2)
+Requirement already satisfied: jinja2 in ./.local/lib/python3.10/site-packages (from torch) (3.1.5)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in ./.local/lib/python3.10/site-packages (from torch) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in ./.local/lib/python3.10/site-packages (from torch) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in ./.local/lib/python3.10/site-packages (from torch) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in ./.local/lib/python3.10/site-packages (from torch) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in ./.local/lib/python3.10/site-packages (from torch) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in ./.local/lib/python3.10/site-packages (from torch) (12.3.1.170)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in ./.local/lib/python3.10/site-packages (from torch) (0.6.2)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in ./.local/lib/python3.10/site-packages (from torch) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in ./.local/lib/python3.10/site-packages (from torch) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in ./.local/lib/python3.10/site-packages (from torch) (3.2.0)
+Requirement already satisfied: sympy==1.13.1 in ./.local/lib/python3.10/site-packages (from torch) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./.local/lib/python3.10/site-packages (from sympy==1.13.1->torch) (1.3.0)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./.local/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (2.4.6)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.3.2)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (5.0.1)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (25.1.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (0.2.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in ./.local/lib/python3.10/site-packages (from aiohttp->datasets) (1.18.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2025.1.31)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
+Requirement already satisfied: transformers in ./.local/lib/python3.10/site-packages (4.48.3)
+Requirement already satisfied: filelock in ./.local/lib/python3.10/site-packages (from transformers) (3.17.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.24.0 in ./.local/lib/python3.10/site-packages (from transformers) (0.28.1)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from transformers) (2.2.3)
+Requirement already satisfied: packaging>=20.0 in ./.local/lib/python3.10/site-packages (from transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.local/lib/python3.10/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./.local/lib/python3.10/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.local/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.1 in ./.local/lib/python3.10/site-packages (from transformers) (0.5.2)
+Requirement already satisfied: tqdm>=4.27 in ./.local/lib/python3.10/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (2024.12.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.24.0->transformers) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.10/site-packages (from requests->transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.10/site-packages (from requests->transformers) (2025.1.31)
+PYTHONPATH: /home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages:
+Starting EfficientNet Multi-GPU Benchmark...
+/home/hice1/jvennamreddy3/.local/lib/python3.10/site-packages/torch/distributed/launch.py:208: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  main()
+W0216 16:03:13.784000 1685929 .local/lib/python3.10/site-packages/torch/distributed/run.py:792] 
+W0216 16:03:13.784000 1685929 .local/lib/python3.10/site-packages/torch/distributed/run.py:792] *****************************************
+W0216 16:03:13.784000 1685929 .local/lib/python3.10/site-packages/torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0216 16:03:13.784000 1685929 .local/lib/python3.10/site-packages/torch/distributed/run.py:792] *****************************************
+Predicted Label:Predicted Label:Predicted Label:  tabby, tabby cattabby, tabby cat 
+
+tabby, tabby cat
+Predicted Label: tabby, tabby cat
+Execution Complete.
+Peak GPU Memory Usage:
+ 1 MiB
+---------------------------------------
+Begin Slurm Epilog: Feb-16-2025 16:03:36
+Job ID:        1300013
+User ID:       jvennamreddy3
+Account:       coc
+Job name:      efficientnet_multi_gpu
+Resources:     cpu=4,gres/gpu:rtx_6000=4,mem=64G,node=1
+Rsrc Used:     cput=00:02:32,vmem=0,walltime=00:00:38,mem=3314156K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-5-0
+---------------------------------------
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet.slurm
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet_cpu.slurm
+[jvennamreddy3@login-ice-2 ~]$ nano efficientnet_multi_gpu.slurm
+[jvennamreddy3@login-ice-2 ~]$ 
